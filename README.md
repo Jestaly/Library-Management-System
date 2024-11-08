@@ -1,31 +1,31 @@
 # Library-Management-System
-Library Management Made in Java
 
+Library Management Made in Java
 
 Flowchart
 |
 Start
 │
 ├── Book Management ────┬──── Add Book ────→ Store in Database
-│                       ├──── Update Book ─→ Update in Database
-│                       └──── Remove Book ─→ Remove from Database
+│ \\\\\\\\\\\\\\\\\\\\\\├──── Update Book ─→ Update in Database
+│ \\\\\\\\\\\\\\\\\\\\\\└──── Remove Book ─→ Remove from Database
 │
 ├── Member Management ──┬──── Add Member ──→ Store in Database
-│                       ├──── Update Member → Update in Database
-│                       └──── Remove Member → Remove from Database
+│ \\\\\\\\\\\\\\\\\\\\\\├──── Update Member → Update in Database
+│ \\\\\\\\\\\\\\\\\\\\\\└──── Remove Member → Remove from Database
 │
 ├── Catalog Search ────→ Search Criteria (Title, Author, ISBN, Genre)
-│                       └──── Display Search Results → View Availability
+│ \\\\\\\\\\\\\\\\\\\\\\└──── Display Search Results → View Availability
 │
 ├── Book Issue and Return ──┬──── Issue Book ──→ Update Book Status to "Borrowed"
-│                           └──── Return Book ─→ Calculate Fine (if overdue)
-│                                                 └→ Update Book Status to "Available"
+│ \\\\\\\\\\\\\\\\\\\\\\\\\\└──── Return Book ─→ Calculate Fine (if overdue)
+│ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\└→ Update Book Status to "Available"
 │
 ├── Fine Calculation and Collection ──→ Calculate Fine for Overdue
-│                                      └── Accept Payment → Update Member Record
+│ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\└── Accept Payment → Update Member Record
 │
 ├── Inventory Management ──→ Track Number of Copies ──→ Update Inventory
-│                           └── Generate Inventory Reports
+│ \\\\\\\\\\\\\\\\\\\\\\\\\\\└── Generate Inventory Reports
 │
 ├── Reservation Management ──→ Reserve Book ──→ Notify When Available
 │
@@ -34,10 +34,10 @@ Start
 ├── Notifications ──→ Send Notification (Due Dates, Reservations, etc.)
 │
 └── User Authentication and Role Management ───→ Verify Role ───→ Access Based on Role
-                                                         │
-                                                         └── End
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\│
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\└── End
 
- Book Management:
+Book Management:
 
     Add, delete, or update book details, including title, author, genre, ISBN, and location within the library.
     Manage book status (e.g., available, reserved, borrowed, lost).
@@ -86,5 +86,3 @@ User Authentication and Role Management:
 
     Provide different access levels for librarians, admin staff, and members.
     Ensure security with role-based access for book management, member management, and inventory control.
-
-                                                         
