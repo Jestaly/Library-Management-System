@@ -61,12 +61,12 @@ public class BookManagement extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-
+                setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-
+                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
 
         });
@@ -218,13 +218,67 @@ public class BookManagement extends JFrame {
 
         // SEARCH BUTTON
         JLabel searchButton = new JLabel();
-        searchButton.setSize(50, 50);
-        searchButton.setLocation(1100, 20);
+        searchButton.setSize(60, 60);
+        searchButton.setLocation(20, 100);
         ImageIcon searchIcon = new ImageIcon("Library Management System/src/Icons/search.png");
         Image searchImage = searchIcon.getImage();
         Image searchScale = searchImage.getScaledInstance(searchButton.getWidth(), searchButton.getHeight(),
                 Image.SCALE_SMOOTH);
         ImageIcon scaledSearch = new ImageIcon(searchScale);
         searchButton.setIcon(scaledSearch);
+
+        sidePanel.add(searchButton);
+
+        // BOOK SECTION
+        JLabel bookButton = new JLabel();
+        bookButton.setSize(60, 60);
+        bookButton.setLocation(20, 210);
+        ImageIcon bookIcon = new ImageIcon("Library Management System/src/Icons/book.png");
+        Image bookImage = bookIcon.getImage();
+        Image bookScale = bookImage.getScaledInstance(bookButton.getWidth(), bookButton.getHeight(),
+                Image.SCALE_SMOOTH);
+        ImageIcon scaledBook = new ImageIcon(bookScale);
+        bookButton.setIcon(scaledBook);
+
+        sidePanel.add(bookButton);
+
+        // MEMBER SECTION
+        JLabel memberButton = new JLabel();
+        memberButton.setSize(60, 60);
+        memberButton.setLocation(20, 330);
+        ImageIcon memberIcon = new ImageIcon("Library Management System/src/Icons/member.png");
+        Image memberImage = memberIcon.getImage();
+        Image memberScale = memberImage.getScaledInstance(memberButton.getWidth(), memberButton.getHeight(),
+                Image.SCALE_SMOOTH);
+        ImageIcon scaledMember = new ImageIcon(memberScale);
+        memberButton.setIcon(scaledMember);
+
+        sidePanel.add(memberButton);
+
+        // STAFF SECTION
+        JLabel staffButton = new JLabel();
+        staffButton.setSize(60, 60);
+        staffButton.setLocation(20, 450);
+        ImageIcon staffIcon = new ImageIcon("Library Management System/src/Icons/staff.png");
+        Image staffImage = staffIcon.getImage();
+        Image staffScale = staffImage.getScaledInstance(staffButton.getWidth(), staffButton.getHeight(),
+                Image.SCALE_SMOOTH);
+        ImageIcon scaledStaff = new ImageIcon(staffScale);
+        staffButton.setIcon(scaledStaff);
+
+        sidePanel.add(staffButton);
+
+        // BORROWER SECTION
+        JLabel borrowerButton = new JLabel();
+        borrowerButton.setSize(60, 60);
+        borrowerButton.setLocation(20, 570);
+        ImageIcon borrowerIcon = new ImageIcon("Library Management System/src/Icons/borrower.png");
+        Image borrowerImage = borrowerIcon.getImage();
+        Image borrowerScale = borrowerImage.getScaledInstance(borrowerButton.getWidth(), borrowerButton.getHeight(),
+                Image.SCALE_SMOOTH);
+        ImageIcon scaledBorrower = new ImageIcon(borrowerScale);
+        borrowerButton.setIcon(scaledBorrower);
+
+        sidePanel.add(borrowerButton);
     }
 }
