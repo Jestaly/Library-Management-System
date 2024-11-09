@@ -109,7 +109,67 @@ public class BookManagement extends JFrame {
         homePanel.add(totalNumStaffsDisplay);
         homePanel.add(exitButton);
 
+        // TITLE
+        JLabel title = new JLabel("LIBRARY MANAGEMENT SYSTEM");
+        title.setForeground(new Color(126, 99, 99));
+        title.setFont(new Font("Dialog", Font.BOLD, 50));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setVerticalAlignment(SwingConstants.CENTER);
+        title.setBounds(-48, 50, 1280, 50);
+        homePanel.add(title);
+
+        // ITEM LABELS
+        JLabel totalNumBooksLabel = new JLabel("Total Books");
+        totalNumBooksLabel.setForeground(new Color(228, 224, 225));
+        totalNumBooksLabel.setFont(new Font("Dialog", Font.BOLD, 30));
+        totalNumBooksLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        totalNumBooksLabel.setVerticalAlignment(SwingConstants.CENTER);
+        totalNumBooksLabel.setBounds(25, 40, 250, 50);
+        totalNumBooksDisplay.add(totalNumBooksLabel);
+
+        JLabel totalNumAvailBooksLabel = new JLabel("Available Books");
+        totalNumAvailBooksLabel.setForeground(new Color(228, 224, 225));
+        totalNumAvailBooksLabel.setFont(new Font("Dialog", Font.BOLD, 30));
+        totalNumAvailBooksLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        totalNumAvailBooksLabel.setVerticalAlignment(SwingConstants.CENTER);
+        totalNumAvailBooksLabel.setBounds(25, 40, 250, 50);
+        totalNumAvailBooksDisplay.add(totalNumAvailBooksLabel);
+
+        JLabel totalPriceBooksLabel = new JLabel("Total Price");
+        totalPriceBooksLabel.setForeground(new Color(228, 224, 225));
+        totalPriceBooksLabel.setFont(new Font("Dialog", Font.BOLD, 30));
+        totalPriceBooksLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        totalPriceBooksLabel.setVerticalAlignment(SwingConstants.CENTER);
+        totalPriceBooksLabel.setBounds(25, 40, 250, 50);
+        totalPriceBooksDisplay.add(totalPriceBooksLabel);
+
+        JLabel totalNumMembersLabel = new JLabel("Members");
+        totalNumMembersLabel.setForeground(new Color(228, 224, 225));
+        totalNumMembersLabel.setFont(new Font("Dialog", Font.BOLD, 30));
+        totalNumMembersLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        totalNumMembersLabel.setVerticalAlignment(SwingConstants.CENTER);
+        totalNumMembersLabel.setBounds(25, 40, 250, 50);
+        totalNumMembersDisplay.add(totalNumMembersLabel);
+
+        JLabel totalNumBorrowersLabel = new JLabel("Borrowers");
+        totalNumBorrowersLabel.setForeground(new Color(228, 224, 225));
+        totalNumBorrowersLabel.setFont(new Font("Dialog", Font.BOLD, 30));
+        totalNumBorrowersLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        totalNumBorrowersLabel.setVerticalAlignment(SwingConstants.CENTER);
+        totalNumBorrowersLabel.setBounds(25, 40, 250, 50);
+        totalNumBorrowersDisplay.add(totalNumBorrowersLabel);
+
+        JLabel totalNumStaffsLabel = new JLabel("Staffs");
+        totalNumStaffsLabel.setForeground(new Color(228, 224, 225));
+        totalNumStaffsLabel.setFont(new Font("Dialog", Font.BOLD, 30));
+        totalNumStaffsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        totalNumStaffsLabel.setVerticalAlignment(SwingConstants.CENTER);
+        totalNumStaffsLabel.setBounds(25, 40, 250, 50);
+        totalNumStaffsDisplay.add(totalNumStaffsLabel);
+
+        // ITEM COUNTS
         JLabel totalNumBooks = new JLabel("2890");
+        totalNumBooks.setForeground(new Color(228, 224, 225));
         totalNumBooks.setFont(new Font("Dialog", Font.PLAIN, 50));
         totalNumBooks.setHorizontalAlignment(SwingConstants.CENTER);
         totalNumBooks.setVerticalAlignment(SwingConstants.CENTER);
@@ -117,6 +177,7 @@ public class BookManagement extends JFrame {
         totalNumBooksDisplay.add(totalNumBooks);
 
         JLabel totalNumAvailBooks = new JLabel("2305");
+        totalNumAvailBooks.setForeground(new Color(228, 224, 225));
         totalNumAvailBooks.setFont(new Font("Dialog", Font.PLAIN, 50));
         totalNumAvailBooks.setHorizontalAlignment(SwingConstants.CENTER);
         totalNumAvailBooks.setVerticalAlignment(SwingConstants.CENTER);
@@ -124,6 +185,7 @@ public class BookManagement extends JFrame {
         totalNumAvailBooksDisplay.add(totalNumAvailBooks);
 
         JLabel totalPriceBooks = new JLabel("$153,200");
+        totalPriceBooks.setForeground(new Color(228, 224, 225));
         totalPriceBooks.setFont(new Font("Dialog", Font.PLAIN, 50));
         totalPriceBooks.setHorizontalAlignment(SwingConstants.CENTER);
         totalPriceBooks.setVerticalAlignment(SwingConstants.CENTER);
@@ -131,6 +193,7 @@ public class BookManagement extends JFrame {
         totalPriceBooksDisplay.add(totalPriceBooks);
 
         JLabel totalNumMembers = new JLabel("207");
+        totalNumMembers.setForeground(new Color(228, 224, 225));
         totalNumMembers.setFont(new Font("Dialog", Font.PLAIN, 50));
         totalNumMembers.setHorizontalAlignment(SwingConstants.CENTER);
         totalNumMembers.setVerticalAlignment(SwingConstants.CENTER);
@@ -138,6 +201,7 @@ public class BookManagement extends JFrame {
         totalNumMembersDisplay.add(totalNumMembers);
 
         JLabel totalNumBorrowers = new JLabel("360");
+        totalNumBorrowers.setForeground(new Color(228, 224, 225));
         totalNumBorrowers.setFont(new Font("Dialog", Font.PLAIN, 50));
         totalNumBorrowers.setHorizontalAlignment(SwingConstants.CENTER);
         totalNumBorrowers.setVerticalAlignment(SwingConstants.CENTER);
@@ -145,11 +209,13 @@ public class BookManagement extends JFrame {
         totalNumBorrowersDisplay.add(totalNumBorrowers);
 
         JLabel totalNumStaffs = new JLabel("15");
+        totalNumStaffs.setForeground(new Color(228, 224, 225));
         totalNumStaffs.setFont(new Font("Dialog", Font.PLAIN, 50));
         totalNumStaffs.setHorizontalAlignment(SwingConstants.CENTER);
         totalNumStaffs.setVerticalAlignment(SwingConstants.CENTER);
         totalNumStaffs.setBounds(25, 90, 250, 50);
         totalNumStaffsDisplay.add(totalNumStaffs);
 
+        //
     }
 }
