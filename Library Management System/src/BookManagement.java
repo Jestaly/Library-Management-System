@@ -216,6 +216,15 @@ public class BookManagement extends JFrame {
         totalNumStaffs.setBounds(25, 90, 250, 50);
         totalNumStaffsDisplay.add(totalNumStaffs);
 
-        //
+        // SEARCH BUTTON
+        JLabel searchButton = new JLabel();
+        searchButton.setSize(50, 50);
+        searchButton.setLocation(1100, 20);
+        ImageIcon searchIcon = new ImageIcon("Library Management System/src/Icons/search.png");
+        Image searchImage = searchIcon.getImage();
+        Image searchScale = searchImage.getScaledInstance(searchButton.getWidth(), searchButton.getHeight(),
+                Image.SCALE_SMOOTH);
+        ImageIcon scaledSearch = new ImageIcon(searchScale);
+        searchButton.setIcon(scaledSearch);
     }
 }
