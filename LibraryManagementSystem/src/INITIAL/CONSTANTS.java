@@ -9,4 +9,5 @@ public final class CONSTANTS {
     public final static int[] LABEL_POS = { 25, 40, 250, 50 };
     public final static int[] COUNT_POS = { 25, 90, 250, 50 };
     public final static int[] BUTTON_SIZE = { 60, 60 };
+    public final static int[] HOME_DIMENSIONS = { 1180, 720 };
 }
