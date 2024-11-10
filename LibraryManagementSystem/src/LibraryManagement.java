@@ -7,6 +7,8 @@ import INITIAL.CONSTANTS;
 
 public class LibraryManagement extends JFrame {
 
+        public JPanel bookPanel = new JPanel();
+
         LibraryManagement() {
                 super("Book Management System");
 
@@ -268,10 +270,52 @@ public class LibraryManagement extends JFrame {
                                 CONSTANTS.COUNT_POS[3]);
                 totalNumStaffsDisplay.add(totalNumStaffs);
 
+                // HOME BUTTON
+                JLabel homeButton = new JLabel();
+                homeButton.setSize(CONSTANTS.SIDE_BUTTON_SIZE[0], CONSTANTS.SIDE_BUTTON_SIZE[1]);
+                homeButton.setLocation(20, 70);
+                ImageIcon homeIcon = new ImageIcon("LibraryManagementSystem/src/Icons/home.png");
+                Image homeImage = homeIcon.getImage();
+                Image homeScale = homeImage.getScaledInstance(homeButton.getWidth(), homeButton.getHeight(),
+                                Image.SCALE_SMOOTH);
+                ImageIcon scaledHome = new ImageIcon(homeScale);
+                homeButton.setIcon(scaledHome);
+                homeButton.addMouseListener(new MouseListener() {
+
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+                                homePanel.setVisible(true);
+                                bookPanel.setVisible(false);
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                                setCursor(new Cursor(Cursor.HAND_CURSOR));
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                                setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        }
+
+                });
+
+                sidePanel.add(homeButton);
+
                 // SEARCH BUTTON
                 JLabel searchButton = new JLabel();
-                searchButton.setSize(CONSTANTS.BUTTON_SIZE[0], CONSTANTS.BUTTON_SIZE[1]);
-                searchButton.setLocation(20, 100);
+                searchButton.setSize(CONSTANTS.SIDE_BUTTON_SIZE[0], CONSTANTS.SIDE_BUTTON_SIZE[1]);
+                searchButton.setLocation(20, 170);
                 ImageIcon searchIcon = new ImageIcon("LibraryManagementSystem/src/Icons/search.png");
                 Image searchImage = searchIcon.getImage();
                 Image searchScale = searchImage.getScaledInstance(searchButton.getWidth(), searchButton.getHeight(),
@@ -311,8 +355,8 @@ public class LibraryManagement extends JFrame {
 
                 // BOOK SECTION
                 JLabel bookButton = new JLabel();
-                bookButton.setSize(CONSTANTS.BUTTON_SIZE[0], CONSTANTS.BUTTON_SIZE[1]);
-                bookButton.setLocation(20, 210);
+                bookButton.setSize(CONSTANTS.SIDE_BUTTON_SIZE[0], CONSTANTS.SIDE_BUTTON_SIZE[1]);
+                bookButton.setLocation(20, 270);
                 ImageIcon bookIcon = new ImageIcon("LibraryManagementSystem/src/Icons/book.png");
                 Image bookImage = bookIcon.getImage();
                 Image bookScale = bookImage.getScaledInstance(bookButton.getWidth(), bookButton.getHeight(),
@@ -329,7 +373,10 @@ public class LibraryManagement extends JFrame {
                         @Override
                         public void mousePressed(MouseEvent e) {
                                 homePanel.setVisible(false);
-                                new BookManagement();
+
+                                new BookManagement(bookPanel);
+                                bookPanel.setVisible(true);
+                                add(bookPanel);
 
                         }
 
@@ -353,8 +400,8 @@ public class LibraryManagement extends JFrame {
 
                 // MEMBER SECTION
                 JLabel memberButton = new JLabel();
-                memberButton.setSize(CONSTANTS.BUTTON_SIZE[0], CONSTANTS.BUTTON_SIZE[1]);
-                memberButton.setLocation(20, 330);
+                memberButton.setSize(CONSTANTS.SIDE_BUTTON_SIZE[0], CONSTANTS.SIDE_BUTTON_SIZE[1]);
+                memberButton.setLocation(20, 370);
                 ImageIcon memberIcon = new ImageIcon("LibraryManagementSystem/src/Icons/member.png");
                 Image memberImage = memberIcon.getImage();
                 Image memberScale = memberImage.getScaledInstance(memberButton.getWidth(), memberButton.getHeight(),
@@ -393,8 +440,8 @@ public class LibraryManagement extends JFrame {
 
                 // STAFF SECTION
                 JLabel staffButton = new JLabel();
-                staffButton.setSize(CONSTANTS.BUTTON_SIZE[0], CONSTANTS.BUTTON_SIZE[1]);
-                staffButton.setLocation(20, 450);
+                staffButton.setSize(CONSTANTS.SIDE_BUTTON_SIZE[0], CONSTANTS.SIDE_BUTTON_SIZE[1]);
+                staffButton.setLocation(20, 470);
                 ImageIcon staffIcon = new ImageIcon("LibraryManagementSystem/src/Icons/staff.png");
                 Image staffImage = staffIcon.getImage();
                 Image staffScale = staffImage.getScaledInstance(staffButton.getWidth(), staffButton.getHeight(),
@@ -433,7 +480,7 @@ public class LibraryManagement extends JFrame {
 
                 // BORROWER SECTION
                 JLabel borrowerButton = new JLabel();
-                borrowerButton.setSize(CONSTANTS.BUTTON_SIZE[0], CONSTANTS.BUTTON_SIZE[1]);
+                borrowerButton.setSize(CONSTANTS.SIDE_BUTTON_SIZE[0], CONSTANTS.SIDE_BUTTON_SIZE[1]);
                 borrowerButton.setLocation(20, 570);
                 ImageIcon borrowerIcon = new ImageIcon("LibraryManagementSystem/src/Icons/borrower.png");
                 Image borrowerImage = borrowerIcon.getImage();
