@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 import java.awt.*;
 import java.awt.event.*;
 import INITIAL.CONSTANTS;
@@ -80,6 +83,7 @@ public class BookManagement extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 addButton.setBackground(new Color(146, 119, 119));
             }
 
@@ -87,6 +91,7 @@ public class BookManagement extends JFrame {
             public void mouseExited(MouseEvent e) {
                 addButton.setBackground(
                         new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1], CONSTANTS.TAB_COLOR[2]));
+                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
 
         });
@@ -119,6 +124,7 @@ public class BookManagement extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 editButton.setBackground(new Color(146, 119, 119));
             }
 
@@ -126,6 +132,7 @@ public class BookManagement extends JFrame {
             public void mouseExited(MouseEvent e) {
                 editButton.setBackground(
                         new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1], CONSTANTS.TAB_COLOR[2]));
+                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
 
         });
@@ -159,6 +166,7 @@ public class BookManagement extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                setCursor(new Cursor(Cursor.HAND_CURSOR));
                 deleteButton.setBackground(new Color(146, 119, 119));
             }
 
@@ -166,10 +174,41 @@ public class BookManagement extends JFrame {
             public void mouseExited(MouseEvent e) {
                 deleteButton.setBackground(
                         new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1], CONSTANTS.TAB_COLOR[2]));
+                setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
 
         });
         bookPanel.add(deleteButton);
+        table(bookPanel);
+    }
+
+    public void table(JPanel bookPanel) {
+        String[] columnNames = { "ID", "Name", "Age" };
+
+        // Data for the JTable
+        Object[][] data = {
+                { 1, "Alice", 23 },
+                { 2, "Bob", 30 },
+                { 3, "Charlie", 25 },
+                { 1, "Alice", 23 },
+
+        };
+
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        JTable bookTable = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(bookTable);
+        bookTable.setFocusable(false);
+        bookTable.getTableHeader().setResizingAllowed(false);
+        bookTable.getTableHeader().setReorderingAllowed(false);
+        bookTable.setFont(new Font("Dialog", Font.PLAIN, 30));
+        bookTable.setCellSelectionEnabled(false);
+        bookTable.setEnabled(false);
+        bookTable.setRowHeight(40);
+        bookTable.setSize(1100, 540);
+        bookTable.setLocation(40, 150);
+        bookTable.setLayout(null);
+        scrollPane.setBounds(40, 150, 1100, 540);
+        bookPanel.add(scrollPane);
     }
 
     public void addBook(JButton addButton) {
