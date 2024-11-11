@@ -1,7 +1,5 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-
 import java.awt.*;
 import java.awt.event.*;
 import INITIAL.CONSTANTS;
@@ -183,7 +181,7 @@ public class BookManagement extends JFrame {
     }
 
     public void table(JPanel bookPanel) {
-        String[] columnNames = { "ID", "Name", "Age" };
+        String[] columnNames = { "Book ID", "Title", "Author", "Publisher", "Genre", "Date Published", "Worth" };
 
         // Data for the JTable
         Object[][] data = {
@@ -198,9 +196,21 @@ public class BookManagement extends JFrame {
         JTable bookTable = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(bookTable);
         bookTable.setFocusable(false);
+
         bookTable.getTableHeader().setResizingAllowed(false);
         bookTable.getTableHeader().setReorderingAllowed(false);
-        bookTable.setFont(new Font("Dialog", Font.PLAIN, 30));
+        bookTable.getTableHeader().setBorder(BorderFactory.createLineBorder(
+                new Color(CONSTANTS.SIDE_COLOR[0], CONSTANTS.SIDE_COLOR[1], CONSTANTS.SIDE_COLOR[2])));
+        bookTable.getTableHeader()
+                .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1], CONSTANTS.TAB_COLOR[2]));
+        bookTable.getTableHeader()
+                .setForeground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
+        bookTable.getTableHeader().setFont(new Font("Dialog", Font.PLAIN, 20));
+        bookTable.setFont(new Font("Dialog", Font.PLAIN, 20));
+        bookTable.setBackground(new Color(146, 119, 119));
+        bookTable.setForeground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
+        bookTable.setGridColor(new Color(CONSTANTS.SIDE_COLOR[0], CONSTANTS.SIDE_COLOR[1], CONSTANTS.SIDE_COLOR[2]));
+        bookTable.setShowGrid(true);
         bookTable.setCellSelectionEnabled(false);
         bookTable.setEnabled(false);
         bookTable.setRowHeight(40);
@@ -208,6 +218,8 @@ public class BookManagement extends JFrame {
         bookTable.setLocation(40, 150);
         bookTable.setLayout(null);
         scrollPane.setBounds(40, 150, 1100, 540);
+        scrollPane.getViewport()
+                .setBackground(new Color(186, 159, 159));
         bookPanel.add(scrollPane);
     }
 
