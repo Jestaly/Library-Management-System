@@ -28,6 +28,7 @@ public class LibraryManagement extends JFrame {
                 sidePanel.setBackground(
                                 new Color(CONSTANTS.SIDE_COLOR[0], CONSTANTS.SIDE_COLOR[1], CONSTANTS.SIDE_COLOR[2]));
                 sidePanel.setLayout(null);
+                sidePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
                 add(sidePanel);
 
                 JPanel homePanel = new JPanel();
@@ -81,42 +82,42 @@ public class LibraryManagement extends JFrame {
                 totalNumBooksDisplay
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
-
+                totalNumBooksDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
                 JPanel totalNumAvailBooksDisplay = new JPanel();
                 totalNumAvailBooksDisplay.setLayout(null);
                 totalNumAvailBooksDisplay.setBounds(440, 130, 300, 200);
                 totalNumAvailBooksDisplay
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
-
+                totalNumAvailBooksDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
                 JPanel totalPriceBooksDisplay = new JPanel();
                 totalPriceBooksDisplay.setLayout(null);
                 totalPriceBooksDisplay.setBounds(800, 130, 300, 200);
                 totalPriceBooksDisplay
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
-
+                totalPriceBooksDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
                 JPanel totalNumMembersDisplay = new JPanel();
                 totalNumMembersDisplay.setLayout(null);
                 totalNumMembersDisplay.setBounds(80, 390, 300, 200);
                 totalNumMembersDisplay
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
-
+                totalNumMembersDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
                 JPanel totalNumBorrowersDisplay = new JPanel();
                 totalNumBorrowersDisplay.setLayout(null);
                 totalNumBorrowersDisplay.setBounds(440, 390, 300, 200);
                 totalNumBorrowersDisplay
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
-
+                totalNumBorrowersDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
                 JPanel totalNumStaffsDisplay = new JPanel();
                 totalNumStaffsDisplay.setLayout(null);
                 totalNumStaffsDisplay.setBounds(800, 390, 300, 200);
                 totalNumStaffsDisplay
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
-
+                totalNumStaffsDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
                 homePanel.add(totalNumBooksDisplay);
                 homePanel.add(totalNumAvailBooksDisplay);
                 homePanel.add(totalPriceBooksDisplay);

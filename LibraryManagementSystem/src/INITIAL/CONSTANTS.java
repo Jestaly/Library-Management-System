@@ -11,6 +11,7 @@ public final class CONSTANTS {
     public final static int[] SIDE_BUTTON_SIZE = { 60, 60 };
     public final static int[] HOME_DIMENSIONS = { 1180, 720 };
     public final static int[] BOOK_BUTTON_SIZE = { 180, 70 };
-    public final static int[] FUNCTION_INTERFACE_DIMENSIONS = { 854, 480 };
+    public final static int[] FUNCTION_INTERFACE_DIMENSIONS = { 480, 450 };
     public final static int[] FUNCTION_INTERFACE_COLOR = { 212, 189, 172 };
+    public final static int[] SAVE_BUTTON_SIZE = {};
 }

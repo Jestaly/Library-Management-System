@@ -86,7 +86,7 @@ public class BookManagement extends JFrame implements Functions {
         addButton.setSize(CONSTANTS.BOOK_BUTTON_SIZE[0], CONSTANTS.BOOK_BUTTON_SIZE[1]);
         addButton.setLocation(70, 50);
         addButton.setFocusable(false);
-        addButton.setBorder(null);
+        addButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         addButton.addMouseListener(new MouseListener() {
 
             @Override
@@ -96,10 +96,7 @@ public class BookManagement extends JFrame implements Functions {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                editButton.setEnabled(false);
-                deleteButton.setEnabled(false);
 
-                add();
             }
 
             @Override
@@ -121,6 +118,16 @@ public class BookManagement extends JFrame implements Functions {
             }
 
         });
+        addButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                editButton.setEnabled(false);
+                deleteButton.setEnabled(false);
+                add();
+            }
+
+        });
         bookPanel.add(addButton);
 
         editButton.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -129,7 +136,7 @@ public class BookManagement extends JFrame implements Functions {
         editButton.setSize(CONSTANTS.BOOK_BUTTON_SIZE[0], CONSTANTS.BOOK_BUTTON_SIZE[1]);
         editButton.setLocation(280, 50);
         editButton.setFocusable(false);
-        editButton.setBorder(null);
+        editButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         editButton.addMouseListener(new MouseListener() {
 
             @Override
@@ -139,7 +146,7 @@ public class BookManagement extends JFrame implements Functions {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                edit();
+
             }
 
             @Override
@@ -161,6 +168,16 @@ public class BookManagement extends JFrame implements Functions {
             }
 
         });
+        editButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteButton.setEnabled(false);
+                addButton.setEnabled(false);
+                edit();
+            }
+
+        });
         bookPanel.add(editButton);
 
         deleteButton.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -170,7 +187,7 @@ public class BookManagement extends JFrame implements Functions {
         deleteButton.setSize(CONSTANTS.BOOK_BUTTON_SIZE[0], CONSTANTS.BOOK_BUTTON_SIZE[1]);
         deleteButton.setLocation(490, 50);
         deleteButton.setFocusable(false);
-        deleteButton.setBorder(null);
+        deleteButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         deleteButton.addMouseListener(new MouseListener() {
 
             @Override
@@ -180,7 +197,7 @@ public class BookManagement extends JFrame implements Functions {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                delete();
+
             }
 
             @Override
@@ -202,16 +219,27 @@ public class BookManagement extends JFrame implements Functions {
             }
 
         });
+        deleteButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                editButton.setEnabled(false);
+                addButton.setEnabled(false);
+                delete();
+            }
+
+        });
         bookPanel.add(deleteButton);
     }
 
     public void table(JPanel bookPanel) {
-        String[] columnNames = { "Book ID", "Title", "Author", "Publisher", "Genre", "Date Published", "Worth" };
+        String[] columnNames = { "Book ID", "Title", "Author", "Genre", "Date Published", "Worth" };
 
         // Data for the JTable
         Object[][] data = { { 1, "Alice", 23 }, { 2, "Bob", 30 }, { 3, "Charlie", 25 }, { 4, "Alice", 23 } };
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
+
         JTable bookTable = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(bookTable);
         bookTable.setFocusable(false);
@@ -239,6 +267,7 @@ public class BookManagement extends JFrame implements Functions {
         scrollPane.setBounds(40, 150, 1100, 540);
         scrollPane.getViewport()
                 .setBackground(new Color(186, 159, 159));
+        scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         bookPanel.add(scrollPane);
     }
 }
