@@ -7,8 +7,6 @@ import INITIAL.CONSTANTS;
 
 public class LibraryManagement extends JFrame {
 
-        public JPanel bookPanel = new JPanel();
-
         LibraryManagement() {
                 super("Book Management System");
 
@@ -23,6 +21,7 @@ public class LibraryManagement extends JFrame {
         }
 
         public void frameLayout() {
+                JPanel bookPanel = new JPanel();
                 JPanel sidePanel = new JPanel();
 
                 sidePanel.setSize(CONSTANTS.SIDE_DIMENSIONS[0], CONSTANTS.SIDE_DIMENSIONS[1]);

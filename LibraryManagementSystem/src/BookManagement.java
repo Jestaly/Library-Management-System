@@ -2,9 +2,29 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
+
 import INITIAL.CONSTANTS;
 
-public class BookManagement extends JFrame {
+public class BookManagement extends JFrame implements Functions {
+    public BookInterfaceFunction bookInterfaceFunction = new BookInterfaceFunction();
+
+    @Override
+    public void add() {
+        System.out.println("ADDING BOOK");
+        bookInterfaceFunction.addInterface();
+    }
+
+    @Override
+    public void edit() {
+        System.out.println("EDITING BOOK");
+        bookInterfaceFunction.editInterface();
+    }
+
+    @Override
+    public void delete() {
+        System.out.println("DELETING BOOK");
+        bookInterfaceFunction.deleteInterface();
+    }
 
     public BookManagement(JPanel bookPanel) {
         bookPanel.setLayout(null);
@@ -15,6 +35,8 @@ public class BookManagement extends JFrame {
     }
 
     public void bookLayout(JPanel bookPanel) {
+        table(bookPanel);
+
         JLabel exitButton = new JLabel();
         exitButton.setSize(50, 50);
         exitButton.setLocation(1100, 20);
@@ -55,6 +77,9 @@ public class BookManagement extends JFrame {
         bookPanel.add(exitButton);
 
         JButton addButton = new JButton("ADD BOOK");
+        JButton editButton = new JButton("EDIT BOOK");
+        JButton deleteButton = new JButton("DELETE BOOK");
+
         addButton.setFont(new Font("Dialog", Font.BOLD, 20));
         addButton.setForeground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
         addButton.setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1], CONSTANTS.TAB_COLOR[2]));
@@ -71,7 +96,10 @@ public class BookManagement extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                addBook(addButton);
+                editButton.setEnabled(false);
+                deleteButton.setEnabled(false);
+
+                add();
             }
 
             @Override
@@ -95,7 +123,6 @@ public class BookManagement extends JFrame {
         });
         bookPanel.add(addButton);
 
-        JButton editButton = new JButton("EDIT BOOK");
         editButton.setFont(new Font("Dialog", Font.BOLD, 20));
         editButton.setForeground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
         editButton.setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1], CONSTANTS.TAB_COLOR[2]));
@@ -112,7 +139,7 @@ public class BookManagement extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                editBook(editButton);
+                edit();
             }
 
             @Override
@@ -136,7 +163,6 @@ public class BookManagement extends JFrame {
         });
         bookPanel.add(editButton);
 
-        JButton deleteButton = new JButton("DELETE BOOK");
         deleteButton.setFont(new Font("Dialog", Font.BOLD, 20));
         deleteButton
                 .setForeground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
@@ -154,7 +180,7 @@ public class BookManagement extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                deleteBook(deleteButton);
+                delete();
             }
 
             @Override
@@ -177,20 +203,13 @@ public class BookManagement extends JFrame {
 
         });
         bookPanel.add(deleteButton);
-        table(bookPanel);
     }
 
     public void table(JPanel bookPanel) {
         String[] columnNames = { "Book ID", "Title", "Author", "Publisher", "Genre", "Date Published", "Worth" };
 
         // Data for the JTable
-        Object[][] data = {
-                { 1, "Alice", 23 },
-                { 2, "Bob", 30 },
-                { 3, "Charlie", 25 },
-                { 1, "Alice", 23 },
-
-        };
+        Object[][] data = { { 1, "Alice", 23 }, { 2, "Bob", 30 }, { 3, "Charlie", 25 }, { 4, "Alice", 23 } };
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         JTable bookTable = new JTable(model);
@@ -221,17 +240,5 @@ public class BookManagement extends JFrame {
         scrollPane.getViewport()
                 .setBackground(new Color(186, 159, 159));
         bookPanel.add(scrollPane);
-    }
-
-    public void addBook(JButton addButton) {
-        System.out.println("ADDED A BOOK!");
-    }
-
-    public void editBook(JButton editButton) {
-        System.out.println("EDITED A BOOK!");
-    }
-
-    public void deleteBook(JButton deleteButton) {
-        System.out.println("DELETED A BOOK!");
     }
 }
