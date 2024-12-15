@@ -83,6 +83,36 @@ public class LibraryManagement extends JFrame {
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
                 totalNumBooksDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+                totalNumBooksDisplay.addMouseListener(new MouseListener() {
+
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                                totalNumBooksDisplay.setBackground(new Color(146, 119, 119));
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                                totalNumBooksDisplay
+                                                .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
+                                                                CONSTANTS.TAB_COLOR[2]));
+                        }
+
+                });
                 JPanel totalNumAvailBooksDisplay = new JPanel();
                 totalNumAvailBooksDisplay.setLayout(null);
                 totalNumAvailBooksDisplay.setBounds(440, 130, 300, 200);
@@ -90,6 +120,36 @@ public class LibraryManagement extends JFrame {
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
                 totalNumAvailBooksDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+                totalNumAvailBooksDisplay.addMouseListener(new MouseListener() {
+
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                                totalNumAvailBooksDisplay.setBackground(new Color(146, 119, 119));
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                                totalNumAvailBooksDisplay
+                                                .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
+                                                                CONSTANTS.TAB_COLOR[2]));
+                        }
+
+                });
                 JPanel totalPriceBooksDisplay = new JPanel();
                 totalPriceBooksDisplay.setLayout(null);
                 totalPriceBooksDisplay.setBounds(800, 130, 300, 200);
@@ -97,6 +157,36 @@ public class LibraryManagement extends JFrame {
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
                 totalPriceBooksDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+                totalPriceBooksDisplay.addMouseListener(new MouseListener() {
+
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                                totalPriceBooksDisplay.setBackground(new Color(146, 119, 119));
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                                totalPriceBooksDisplay
+                                                .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
+                                                                CONSTANTS.TAB_COLOR[2]));
+                        }
+
+                });
                 JPanel totalNumMembersDisplay = new JPanel();
                 totalNumMembersDisplay.setLayout(null);
                 totalNumMembersDisplay.setBounds(80, 390, 300, 200);
@@ -104,6 +194,36 @@ public class LibraryManagement extends JFrame {
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
                 totalNumMembersDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+                totalNumMembersDisplay.addMouseListener(new MouseListener() {
+
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                                totalNumMembersDisplay.setBackground(new Color(146, 119, 119));
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                                totalNumMembersDisplay
+                                                .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
+                                                                CONSTANTS.TAB_COLOR[2]));
+                        }
+
+                });
                 JPanel totalNumBorrowersDisplay = new JPanel();
                 totalNumBorrowersDisplay.setLayout(null);
                 totalNumBorrowersDisplay.setBounds(440, 390, 300, 200);
@@ -111,6 +231,36 @@ public class LibraryManagement extends JFrame {
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
                 totalNumBorrowersDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+                totalNumBorrowersDisplay.addMouseListener(new MouseListener() {
+
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                                totalNumBorrowersDisplay.setBackground(new Color(146, 119, 119));
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                                totalNumBorrowersDisplay
+                                                .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
+                                                                CONSTANTS.TAB_COLOR[2]));
+                        }
+
+                });
                 JPanel totalNumStaffsDisplay = new JPanel();
                 totalNumStaffsDisplay.setLayout(null);
                 totalNumStaffsDisplay.setBounds(800, 390, 300, 200);
@@ -118,6 +268,36 @@ public class LibraryManagement extends JFrame {
                                 .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
                                                 CONSTANTS.TAB_COLOR[2]));
                 totalNumStaffsDisplay.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+                totalNumStaffsDisplay.addMouseListener(new MouseListener() {
+
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                                totalNumStaffsDisplay.setBackground(new Color(146, 119, 119));
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                                totalNumStaffsDisplay
+                                                .setBackground(new Color(CONSTANTS.TAB_COLOR[0], CONSTANTS.TAB_COLOR[1],
+                                                                CONSTANTS.TAB_COLOR[2]));
+                        }
+
+                });
                 homePanel.add(totalNumBooksDisplay);
                 homePanel.add(totalNumAvailBooksDisplay);
                 homePanel.add(totalPriceBooksDisplay);
