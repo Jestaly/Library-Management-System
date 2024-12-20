@@ -2,11 +2,13 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 import INITIAL.CONSTANTS;
 
 public class BookManagement extends JFrame implements Functions {
     public BookInterfaceFunction bookInterfaceFunction = new BookInterfaceFunction();
+    public DatabaseConnector connector = new DatabaseConnector();
 
     @Override
     public void add() {
@@ -26,7 +28,7 @@ public class BookManagement extends JFrame implements Functions {
         bookInterfaceFunction.deleteInterface();
     }
 
-    public BookManagement(JPanel bookPanel) {
+    protected BookManagement(JPanel bookPanel) throws SQLException {
         bookPanel.setLayout(null);
         bookPanel.setSize(CONSTANTS.HOME_DIMENSIONS[0], CONSTANTS.HOME_DIMENSIONS[1]);
         bookPanel.setBackground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
@@ -34,7 +36,7 @@ public class BookManagement extends JFrame implements Functions {
         bookLayout(bookPanel);
     }
 
-    public void bookLayout(JPanel bookPanel) {
+    private void bookLayout(JPanel bookPanel) throws SQLException {
         table(bookPanel);
 
         JLabel exitButton = new JLabel();
@@ -232,13 +234,10 @@ public class BookManagement extends JFrame implements Functions {
         bookPanel.add(deleteButton);
     }
 
-    public void table(JPanel bookPanel) {
+    private void table(JPanel bookPanel) throws SQLException {
         String[] columnNames = { "Book ID", "Title", "Author", "Genre", "Date Published", "Worth" };
 
-        // Data for the JTable
-        Object[][] data = { { 1, "Alice", 23 }, { 2, "Bob", 30 }, { 3, "Charlie", 25 }, { 4, "Alice", 23 } };
-
-        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        DefaultTableModel model = new DefaultTableModel(dataTable(columnNames), columnNames);
 
         JTable bookTable = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(bookTable);
@@ -253,7 +252,7 @@ public class BookManagement extends JFrame implements Functions {
         bookTable.getTableHeader()
                 .setForeground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
         bookTable.getTableHeader().setFont(new Font("Dialog", Font.PLAIN, 20));
-        bookTable.setFont(new Font("Dialog", Font.PLAIN, 20));
+        bookTable.setFont(new Font("Dialog", Font.PLAIN, 15));
         bookTable.setBackground(new Color(146, 119, 119));
         bookTable.setForeground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
         bookTable.setGridColor(new Color(CONSTANTS.SIDE_COLOR[0], CONSTANTS.SIDE_COLOR[1], CONSTANTS.SIDE_COLOR[2]));
@@ -269,5 +268,38 @@ public class BookManagement extends JFrame implements Functions {
                 .setBackground(new Color(186, 159, 159));
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         bookPanel.add(scrollPane);
+    }
+
+    private String[][] dataTable(String[] columnNames) throws SQLException {
+        int rowCount = getNumData();
+        int columnCount = columnNames.length;
+        connector.statement = connector.connect().createStatement();
+        connector.query = "SELECT * FROM book;";
+        connector.resultSet = connector.statement.executeQuery(connector.query);
+
+        String[][] data = new String[rowCount][columnCount];
+
+        int i = 0;
+        while (connector.resultSet.next()) {
+            for (int j = 0; j < columnNames.length; j++) {
+                data[i][j] = connector.resultSet.getString(j + 1).toString();
+            }
+            i++;
+        }
+
+        connector.resultSet.close();
+        return data;
+    }
+
+    private int getNumData() throws SQLException {
+        connector.statement = connector.connect().createStatement();
+        connector.query = "SELECT COUNT(*) AS num_of_book FROM book;";
+        connector.resultSet = connector.statement.executeQuery(connector.query);
+        int numData = 0;
+        while (connector.resultSet.next()) {
+            numData = Integer.parseInt(connector.resultSet.getString(1));
+        }
+        connector.resultSet.close();
+        return numData;
     }
 }
