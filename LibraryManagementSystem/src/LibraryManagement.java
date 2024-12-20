@@ -22,8 +22,10 @@ public class LibraryManagement extends JFrame {
                 setVisible(true);
         }
 
+        public JPanel bookPanel = new JPanel();
+
         public void frameLayout() throws SQLException {
-                JPanel bookPanel = new JPanel();
+
                 JPanel sidePanel = new JPanel();
 
                 sidePanel.setSize(CONSTANTS.SIDE_DIMENSIONS[0], CONSTANTS.SIDE_DIMENSIONS[1]);

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import INITIAL.CONSTANTS;
 
 public class BookManagement extends JFrame implements Functions {
-    public BookInterfaceFunction bookInterfaceFunction = new BookInterfaceFunction();
-    public DatabaseConnector connector = new DatabaseConnector();
+    protected BookInterfaceFunction bookInterfaceFunction = new BookInterfaceFunction();
+    protected DatabaseConnector connector = new DatabaseConnector();
 
     @Override
     public void add() {

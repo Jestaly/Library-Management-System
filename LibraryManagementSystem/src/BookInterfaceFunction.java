@@ -8,10 +8,12 @@ import INITIAL.CONSTANTS;
 
 public class BookInterfaceFunction extends JFrame {
     public BookInterfaceFunction() {
-        setSize(CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[0], CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[1]);
+        setSize(CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[0],
+                CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[1]);
         setLocationRelativeTo(null);
         setLayout(null);
         setResizable(false);
+
     }
 
     public void addInterface() {
@@ -20,6 +22,7 @@ public class BookInterfaceFunction extends JFrame {
                 CONSTANTS.FUNCTION_INTERFACE_COLOR[2]));
         addPanel.setSize(CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[0], CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[1]);
         addPanel.setLayout(null);
+        addPanel.setLocation(0, 0);
 
         JTextField titleField = new JTextField();
         titleField.setSize(420, 40);
