@@ -4,19 +4,27 @@ import java.awt.event.MouseListener;
 import java.sql.SQLException;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import INITIAL.CONSTANTS;
 
 public class BookInterfaceFunction extends JFrame {
 
     private DatabaseConnector connector = new DatabaseConnector();
+    protected LibraryManagement libraryManagement = new LibraryManagement();
+    protected BookManagement bookManagement = new BookManagement();
+
+    // protected BookInterfaceFunction(BookManagement bookManagement) {
+    // this.bookManagement = bookManagement;
+    // }
 
     protected BookInterfaceFunction() {
-        setSize(CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[0],
-                CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[1]);
-        setLocationRelativeTo(null);
-        setLayout(null);
-        setResizable(false);
+        // setSize(CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[0],
+        // CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[1]);
+
+        // setLocationRelativeTo(null);
+        // setLayout(null);
+        // setResizable(false);
 
     }
 
@@ -548,6 +556,9 @@ public class BookInterfaceFunction extends JFrame {
             connector.statement = connector.connect().createStatement();
             connector.query = "INSERT INTO book_count_history VALUES ();";
             connector.statement.executeUpdate(connector.query);
+
+            refreshBook();
+
             connector.statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -579,7 +590,6 @@ public class BookInterfaceFunction extends JFrame {
     }
 
     private String getZeros(int latestID) {
-
         switch (Integer.toString(latestID).length()) {
             case 1:
                 return "00";
@@ -589,5 +599,50 @@ public class BookInterfaceFunction extends JFrame {
                 return "";
         }
         return null;
+    }
+
+    private void refreshBook() {
+        int rowCount = getNumData();
+        System.out.println(bookManagement.columnNames.length);
+        int columnCount = bookManagement.columnNames.length;
+
+        try {
+            connector.statement = connector.connect().createStatement();
+            connector.query = "SELECT * FROM book;";
+            connector.resultSet = connector.statement.executeQuery(connector.query);
+
+            String[][] data = new String[rowCount][columnCount];
+            int i = 0;
+            while (connector.resultSet.next()) {
+                for (int j = 0; j < bookManagement.columnNames.length; j++) {
+                    data[i][j] = connector.resultSet.getString(j + 1).toString();
+                }
+                i++;
+            }
+            bookManagement.model = new DefaultTableModel(data, bookManagement.columnNames);
+            connector.resultSet.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected int getNumData() {
+        try {
+            connector.statement = connector.connect().createStatement();
+            connector.query = "SELECT COUNT(*) AS num_of_book FROM book;";
+            connector.resultSet = connector.statement.executeQuery(connector.query);
+
+            int numData = 0;
+            while (connector.resultSet.next()) {
+                numData = Integer.parseInt(connector.resultSet.getString(1));
+            }
+
+            connector.resultSet.close();
+            return numData;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

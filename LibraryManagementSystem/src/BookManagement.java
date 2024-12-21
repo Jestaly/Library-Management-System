@@ -7,33 +7,45 @@ import java.sql.SQLException;
 import INITIAL.CONSTANTS;
 
 public class BookManagement extends JFrame implements Functions {
-    protected BookInterfaceFunction bookInterfaceFunction = new BookInterfaceFunction();
+    // protected BookInterfaceFunction bookInterfaceFunction = new
+    // BookInterfaceFunction();
     protected DatabaseConnector connector = new DatabaseConnector();
 
-    @Override
-    public void add() {
-        System.out.println("ADDING BOOK");
-        bookInterfaceFunction.addInterface();
-    }
+    // protected BookManagement(BookInterfaceFunction bookInterfaceFunction) {
+    // this.bookInterfaceFunction = bookInterfaceFunction;
+    // }
+    protected BookManagement() {
 
-    @Override
-    public void edit() {
-        System.out.println("EDITING BOOK");
-        bookInterfaceFunction.editInterface();
-    }
-
-    @Override
-    public void delete() {
-        System.out.println("DELETING BOOK");
-        bookInterfaceFunction.deleteInterface();
     }
 
     protected BookManagement(JPanel bookPanel) {
         bookPanel.setLayout(null);
         bookPanel.setSize(CONSTANTS.HOME_DIMENSIONS[0], CONSTANTS.HOME_DIMENSIONS[1]);
-        bookPanel.setBackground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
+        bookPanel
+                .setBackground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
         bookPanel.setLocation(100, 0);
+
+        // bookInterfaceFunction = new BookInterfaceFunction(this);
         bookLayout(bookPanel);
+
+    }
+
+    @Override
+    public void add() {
+        System.out.println("ADDING BOOK");
+        // bookInterfaceFunction.addInterface();
+    }
+
+    @Override
+    public void edit() {
+        System.out.println("EDITING BOOK");
+        // bookInterfaceFunction.editInterface();
+    }
+
+    @Override
+    public void delete() {
+        System.out.println("DELETING BOOK");
+        // bookInterfaceFunction.deleteInterface();
     }
 
     private void bookLayout(JPanel bookPanel) {
@@ -234,10 +246,10 @@ public class BookManagement extends JFrame implements Functions {
         bookPanel.add(deleteButton);
     }
 
-    private void table(JPanel bookPanel) {
-        String[] columnNames = { "Book ID", "Title", "Author", "Genre", "Date Published", "Worth" };
+    protected final String[] columnNames = { "Book ID", "Title", "Author", "Genre", "Date Published", "Worth" };
+    protected DefaultTableModel model = new DefaultTableModel(dataTable(columnNames), columnNames);
 
-        DefaultTableModel model = new DefaultTableModel(dataTable(columnNames), columnNames);
+    private void table(JPanel bookPanel) {
 
         JTable bookTable = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(bookTable);
@@ -272,9 +284,9 @@ public class BookManagement extends JFrame implements Functions {
 
     private String[][] dataTable(String[] columnNames) {
         int rowCount = getNumData();
+        int columnCount = columnNames.length;
 
         try {
-            int columnCount = columnNames.length;
             connector.statement = connector.connect().createStatement();
             connector.query = "SELECT * FROM book;";
             connector.resultSet = connector.statement.executeQuery(connector.query);
@@ -297,7 +309,7 @@ public class BookManagement extends JFrame implements Functions {
         }
     }
 
-    private int getNumData() {
+    protected int getNumData() {
         try {
             connector.statement = connector.connect().createStatement();
             connector.query = "SELECT COUNT(*) AS num_of_book FROM book;";

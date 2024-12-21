@@ -21,7 +21,7 @@ public class LibraryManagement extends JFrame {
                 setVisible(true);
         }
 
-        public JPanel bookPanel = new JPanel();
+        protected JPanel bookPanel = new JPanel();
 
         public void frameLayout() {
 
