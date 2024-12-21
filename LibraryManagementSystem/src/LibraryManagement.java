@@ -3,13 +3,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.SQLException;
 
 import INITIAL.CONSTANTS;
 
 public class LibraryManagement extends JFrame {
 
-        LibraryManagement() throws SQLException {
+        LibraryManagement() {
                 super("Book Management System");
 
                 setSize(CONSTANTS.MAIN_DIMENSIONS[0], CONSTANTS.MAIN_DIMENSIONS[1]);
@@ -24,7 +23,7 @@ public class LibraryManagement extends JFrame {
 
         public JPanel bookPanel = new JPanel();
 
-        public void frameLayout() throws SQLException {
+        public void frameLayout() {
 
                 JPanel sidePanel = new JPanel();
 
@@ -557,12 +556,7 @@ public class LibraryManagement extends JFrame {
                         @Override
                         public void mousePressed(MouseEvent e) {
                                 homePanel.setVisible(false);
-
-                                try {
-                                        new BookManagement(bookPanel);
-                                } catch (SQLException e1) {
-                                        e1.printStackTrace();
-                                }
+                                new BookManagement(bookPanel);
                                 bookPanel.setVisible(true);
                                 add(bookPanel);
 

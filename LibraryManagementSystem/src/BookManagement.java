@@ -28,7 +28,7 @@ public class BookManagement extends JFrame implements Functions {
         bookInterfaceFunction.deleteInterface();
     }
 
-    protected BookManagement(JPanel bookPanel) throws SQLException {
+    protected BookManagement(JPanel bookPanel) {
         bookPanel.setLayout(null);
         bookPanel.setSize(CONSTANTS.HOME_DIMENSIONS[0], CONSTANTS.HOME_DIMENSIONS[1]);
         bookPanel.setBackground(new Color(CONSTANTS.MAIN_COLOR[0], CONSTANTS.MAIN_COLOR[1], CONSTANTS.MAIN_COLOR[2]));
@@ -36,7 +36,7 @@ public class BookManagement extends JFrame implements Functions {
         bookLayout(bookPanel);
     }
 
-    private void bookLayout(JPanel bookPanel) throws SQLException {
+    private void bookLayout(JPanel bookPanel) {
         table(bookPanel);
 
         JLabel exitButton = new JLabel();
@@ -234,7 +234,7 @@ public class BookManagement extends JFrame implements Functions {
         bookPanel.add(deleteButton);
     }
 
-    private void table(JPanel bookPanel) throws SQLException {
+    private void table(JPanel bookPanel) {
         String[] columnNames = { "Book ID", "Title", "Author", "Genre", "Date Published", "Worth" };
 
         DefaultTableModel model = new DefaultTableModel(dataTable(columnNames), columnNames);
@@ -270,36 +270,50 @@ public class BookManagement extends JFrame implements Functions {
         bookPanel.add(scrollPane);
     }
 
-    private String[][] dataTable(String[] columnNames) throws SQLException {
+    private String[][] dataTable(String[] columnNames) {
         int rowCount = getNumData();
-        int columnCount = columnNames.length;
-        connector.statement = connector.connect().createStatement();
-        connector.query = "SELECT * FROM book;";
-        connector.resultSet = connector.statement.executeQuery(connector.query);
 
-        String[][] data = new String[rowCount][columnCount];
+        try {
+            int columnCount = columnNames.length;
+            connector.statement = connector.connect().createStatement();
+            connector.query = "SELECT * FROM book;";
+            connector.resultSet = connector.statement.executeQuery(connector.query);
 
-        int i = 0;
-        while (connector.resultSet.next()) {
-            for (int j = 0; j < columnNames.length; j++) {
-                data[i][j] = connector.resultSet.getString(j + 1).toString();
+            String[][] data = new String[rowCount][columnCount];
+            int i = 0;
+            while (connector.resultSet.next()) {
+                for (int j = 0; j < columnNames.length; j++) {
+                    data[i][j] = connector.resultSet.getString(j + 1).toString();
+                }
+                i++;
             }
-            i++;
-        }
 
-        connector.resultSet.close();
-        return data;
+            connector.resultSet.close();
+
+            return data;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    private int getNumData() throws SQLException {
-        connector.statement = connector.connect().createStatement();
-        connector.query = "SELECT COUNT(*) AS num_of_book FROM book;";
-        connector.resultSet = connector.statement.executeQuery(connector.query);
-        int numData = 0;
-        while (connector.resultSet.next()) {
-            numData = Integer.parseInt(connector.resultSet.getString(1));
+    private int getNumData() {
+        try {
+            connector.statement = connector.connect().createStatement();
+            connector.query = "SELECT COUNT(*) AS num_of_book FROM book;";
+            connector.resultSet = connector.statement.executeQuery(connector.query);
+
+            int numData = 0;
+            while (connector.resultSet.next()) {
+                numData = Integer.parseInt(connector.resultSet.getString(1));
+            }
+
+            connector.resultSet.close();
+            return numData;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
         }
-        connector.resultSet.close();
-        return numData;
     }
+
 }

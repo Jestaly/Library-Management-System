@@ -7,6 +7,8 @@ public class DatabaseConnector {
     public String query;
     public Statement statement;
     public ResultSet resultSet;
+    public PreparedStatement prepStatement;
+    public CallableStatement callStatement;
     // private static final String QUERY = "SELECT * FROM book";
 
     public Connection connect() throws SQLException {

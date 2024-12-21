@@ -1,7 +1,7 @@
 interface Functions {
-    public void add();
+    public abstract void add();
 
-    public void edit();
+    public abstract void edit();
 
-    public void delete();
+    public abstract void delete();
 }

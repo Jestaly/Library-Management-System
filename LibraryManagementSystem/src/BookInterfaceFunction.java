@@ -11,7 +11,7 @@ public class BookInterfaceFunction extends JFrame {
 
     private DatabaseConnector connector = new DatabaseConnector();
 
-    public BookInterfaceFunction() {
+    protected BookInterfaceFunction() {
         setSize(CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[0],
                 CONSTANTS.FUNCTION_INTERFACE_DIMENSIONS[1]);
         setLocationRelativeTo(null);
@@ -216,12 +216,10 @@ public class BookInterfaceFunction extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                try {
-                    saveData(titleField.getText(), authorField.getText(), datePublishedField.getText(),
-                            genreField.getText(), worthField.getText());
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
+
+                saveData(titleField.getText(), authorField.getText(), datePublishedField.getText(),
+                        genreField.getText(), worthField.getText());
+
             }
 
             @Override
@@ -538,32 +536,46 @@ public class BookInterfaceFunction extends JFrame {
     }
 
     private void saveData(String title, String author, String datePublished,
-            String genre, String worth) throws SQLException {
+            String genre, String worth) {
         String bookID = getBookID();
-        connector.statement = connector.connect().createStatement();
-        connector.query = "INSERT INTO book VALUES ('" + bookID + "','" + title + "','" + author + "','" + genre + "','"
-                + datePublished + "','" + worth + ");";
-        connector.resultSet = connector.statement.executeQuery(connector.query);
-        connector.resultSet.close();
+        try {
+            connector.statement = connector.connect().createStatement();
+            connector.query = "INSERT INTO book VALUES ('" + bookID + "','" + title + "','" + author + "','" + genre
+                    + "','" + datePublished + "'," + worth + ");";
+            connector.statement.executeUpdate(connector.query);
+            connector.statement.close();
 
-        connector.statement = connector.connect().createStatement();
-        connector.query = "INSERT INTO book_count_history VALUES ();";
-        connector.resultSet = connector.statement.executeQuery(connector.query);
-        connector.resultSet.close();
+            connector.statement = connector.connect().createStatement();
+            connector.query = "INSERT INTO book_count_history VALUES ();";
+            connector.statement.executeUpdate(connector.query);
+            connector.statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private String getBookID() throws SQLException {
-        connector.statement = connector.connect().createStatement();
-        connector.query = "SELECT COUNT(*) count FROM book_count_history;";
-        connector.resultSet = connector.statement.executeQuery(connector.query);
-        int latestID = 0;
-        while (connector.resultSet.next()) {
-            latestID = Integer.parseInt(connector.resultSet.getString(1).toString());
+    private String getBookID() {
+        try {
+            connector.statement = connector.connect().createStatement();
+            connector.query = "SELECT COUNT(*) count FROM book_count_history;";
+            connector.resultSet = connector.statement.executeQuery(connector.query);
+
+            int latestID = 0;
+            while (connector.resultSet.next()) {
+                latestID = Integer.parseInt(connector.resultSet.getString(1).toString());
+            }
+            connector.resultSet.close();
+
+            String newID = Integer.toString(latestID + 1);
+            String bookID = "B" + getZeros(latestID) + newID;
+
+            connector.statement.close();
+
+            return bookID;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
-        connector.resultSet.close();
-        String newID = Integer.toString(latestID + 1);
-        String bookID = "B" + getZeros(latestID) + newID;
-        return bookID;
     }
 
     private String getZeros(int latestID) {
